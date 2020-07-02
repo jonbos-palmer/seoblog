@@ -1,5 +1,6 @@
 const router = require("express").Router();
+const { time } = require("../controllers/blog");
 
-router.get("/", (req, res) => res.json({ time: Date().toString() }));
+router.get("/", time);
 
 module.exports = router;
