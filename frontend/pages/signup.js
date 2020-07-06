@@ -1,16 +1,10 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
-
+import moduleName from "../components/auth/SignupComponent";
+import SignupComponent from "../components/auth/SignupComponent";
 const Signup = () => (
   <Layout>
-    <h2>Signup Page</h2>
-    <Link href="/signin">
-      <a>Sign In</a>
-    </Link>
-    <br />
-    <Link href="/">
-      <a>Home</a>
-    </Link>
+    <SignupComponent />
   </Layout>
 );
 export default Signup;
