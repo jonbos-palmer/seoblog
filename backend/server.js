@@ -5,11 +5,11 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+require("dotenv").config();
+
 //routes
 const blogRoutes = require("./routes/blog");
 const authRoutes = require("./routes/auth");
-
-require("dotenv").config();
 
 // app
 const app = express();
