@@ -13,16 +13,18 @@ import {
   NavbarText,
 } from "reactstrap";
 import { useState } from "react";
+import { APP_NAME } from "../config";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
+  console.log(APP_NAME);
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">{APP_NAME}</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
