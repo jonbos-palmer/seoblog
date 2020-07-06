@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
 
-    salt: Number,
+    salt: String,
     about: {
         type: String,
     },
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     },
     photo: {
         data: Buffer,
-        contentType: string,
+        contentType: String,
     },
     resetPasswordLink: {
         data: String,
@@ -73,7 +73,10 @@ userSchema.methods = {
     encryptPassword: function(password) {
         if (!password) return "";
         try {
-            crypto.createHmac("sha1", this.salt).update(password).digest("hex");
+            return crypto
+                .createHmac("sha1", this.salt)
+                .update(password)
+                .digest("hex");
         } catch (err) {
             return "";
         }
