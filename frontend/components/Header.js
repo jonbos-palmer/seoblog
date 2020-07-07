@@ -20,8 +20,6 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
-  console.log(APP_NAME);
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -32,14 +30,14 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink>
-                <Link href="/signup">Sign Up</Link>
-              </NavLink>
+              <Link href="/signin">
+                <NavLink>Signin</NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink>
-                <Link href="/signin">Sign In</Link>
-              </NavLink>
+              <Link href="/signup">
+                <NavLink>Signup</NavLink>
+              </Link>
             </NavItem>
           </Nav>
         </Collapse>
