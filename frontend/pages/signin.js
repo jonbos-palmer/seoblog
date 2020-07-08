@@ -1,15 +1,12 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
+import SigninComponent from "../components/auth/SigninComponent";
 const Signin = () => (
   <Layout>
-    <h2>Signin Page</h2>
-    <Link href="/signup">
-      <a>Sign Up</a>
-    </Link>
-    <br />
-    <Link href="/">
-      <a>Home</a>
-    </Link>
+    <div className="col-md-6 offset-md-3 pt-4 pb-4">
+      <h2 className="text-center">Sign Up</h2>
+      <SigninComponent />
+    </div>
   </Layout>
 );
 export default Signin;
