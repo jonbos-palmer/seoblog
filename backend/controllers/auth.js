@@ -3,10 +3,6 @@ const shortId = require("shortid");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
 
-exports.read = (req, res) => {
-  req.profile.hashed_password = undefinedl;
-  return res.json(req.profile);
-};
 exports.signup = (req, res) => {
   User.findOne({ email: req.body.email }).exec((err, user) => {
     if (user) {
