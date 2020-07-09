@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signin } from "../../actions/auth";
+import Router from "next/router";
 const SigninComponent = () => {
   const [values, setValues] = useState({
     email: "",
@@ -17,24 +18,17 @@ const SigninComponent = () => {
     // console.table({ name, email, password, error, loading, message, showForm });
     setValues({ ...values, loading: true, error: false });
     const user = { name, email, password };
-    signup(user).then((data) => {
+    signin(user).then((data) => {
       if (data.error) {
         console.log(data.error);
         setValues({ ...values, error: data.error, loading: false });
       } else {
-        setValues({
-          ...values,
-          name: "",
-          email: "",
-          password: "",
-          error: "",
-          loading: false,
-          message: data.message,
-          showForm: false,
-        });
+        console.log(data);
+        Router.push("/");
       }
     });
   };
+
   const handleChange = (name) => (e) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
