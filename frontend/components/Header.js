@@ -18,7 +18,7 @@ import Link from "next/link";
 import { signout, isAuth } from "../actions/auth";
 import Router from "next/router";
 import NProgress from "nprogress";
-
+import ".././node_modules/nprogress/nprogress.css";
 Router.events.on("routeChangeStart", (url) => {
   NProgress.start();
 });
