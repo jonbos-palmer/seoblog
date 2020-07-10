@@ -17,7 +17,7 @@ module.exports = router;
 router.get("/categories", list);
 
 // get one category
-router.get("category/:slug", read);
+router.get("/category/:slug", read);
 
 // delete a category
-router.delete("category/:slug", requireSignin, adminMiddleware, remove);
+router.delete("/category/:slug", requireSignin, adminMiddleware, remove);
