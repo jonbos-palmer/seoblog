@@ -17,6 +17,19 @@ import { APP_NAME } from "../config";
 import Link from "next/link";
 import { signout, isAuth } from "../actions/auth";
 import Router from "next/router";
+import NProgress from "nprogress";
+
+Router.events.on("routeChangeStart", (url) => {
+  NProgress.start();
+});
+
+Router.events.on("routeChangeComplete", (url) => {
+  NProgress.done();
+});
+
+Router.events.on("routeChangeError", (url) => {
+  NProgress.done();
+});
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
