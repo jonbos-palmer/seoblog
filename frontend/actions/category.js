@@ -38,7 +38,7 @@ export const singleCategory = (slug) => {
 };
 
 export const removeCategory = (slug, token) => {
-  return fetch(`${API}/category`, {
+  return fetch(`${API}/category/${slug}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
