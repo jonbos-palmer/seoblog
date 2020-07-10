@@ -19,7 +19,13 @@ const Category = () => {
 
   const clickSubmit = (e) => {
     e.preventDefault();
-    console.log("create category ", name);
+    create({ name }, token).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error, success: false });
+      } else {
+        setValues({ ...values, error: false, success: true, name: "" });
+      }
+    });
   };
 
   const handleChange = (e) => {
