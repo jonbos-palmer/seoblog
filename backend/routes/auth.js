@@ -17,6 +17,6 @@ router.post("/signup", userSignupValidator, runValidation, signup);
 
 router.post("/signin", userSignInValidator, runValidation, signin);
 
-router.get("/signout", requireSignin, signout);
+router.get("/signout", signout);
 
 module.exports = router;
