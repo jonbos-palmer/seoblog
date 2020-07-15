@@ -26,7 +26,6 @@ const blogSchema = new mongoose.Schema(
       min: 200,
     },
     excerpt: {
-      required: true,
       type: String,
       max: 1000,
     },
@@ -37,9 +36,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
     },
     photo: {
-      type: Buffer,
+      data: Buffer,
       contentType: String,
     },
+
     categories: [{ type: ObjectId, ref: "Category", required: true }],
     tags: [{ type: ObjectId, ref: "Tag", required: true }],
     postedBy: { type: ObjectId, ref: "User" },
