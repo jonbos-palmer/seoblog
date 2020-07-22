@@ -51,6 +51,7 @@ const CreateBlog = ({ router }) => {
     hidePublishButton,
   } = values;
 
+  const token = getCookie("token");
   useEffect(() => {
     initCategories();
     initTags();
@@ -79,18 +80,33 @@ const CreateBlog = ({ router }) => {
 
   const publishBlog = (e) => {
     e.preventDefault();
-    console.log(e);
+    createBlog(formData, token).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({
+          ...values,
+          title: "",
+          error: "",
+          success: `A new blog titled ${data.title} is created`,
+        });
+        setBody("");
+        setCategories([]);
+        setTags([]);
+      }
+    });
   };
 
   const handleChange = (name) => (e) => {
-    const value = name === "photo" ? e.target.files[0] : event.target.value;
+    console.log(name);
+    const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
-    setValues({ ...values, [name]: value, formData: formData, error: "" });
+    setValues({ ...values, [name]: value, formData, error: "" });
   };
 
   const handleBody = (e) => {
     setBody(e);
-    formData.set("body", event);
+    formData.set("body", e);
     if (typeof window !== undefined) {
       localStorage.setItem("blog", JSON.stringify(body));
     }
@@ -159,7 +175,7 @@ const CreateBlog = ({ router }) => {
             value={title}
             type="text"
             className="form-control"
-            onChange={handleChange(title)}
+            onChange={handleChange("title")}
           />
         </div>
 
@@ -186,6 +202,21 @@ const CreateBlog = ({ router }) => {
       <div className="row">
         <div className="col-md-8">{createBlogForm()}</div>
         <div className="col-md-4">
+          <div className="form-group pb-2">
+            <h5>Featured Image</h5>
+            <small className="text-muted form-text">Maximum size 1mb</small>
+            <br />
+            <label className="label btn btn-info">
+              Upload Featured Image{" "}
+              <input
+                onChange={handleChange("photo")}
+                type="file"
+                accept="image/*"
+                hidden
+              />
+            </label>
+            <hr />
+          </div>
           <div>
             <h5>Categories</h5>
             <ul style={{ maxHeight: "100px", overflowY: "scroll" }}>
@@ -199,6 +230,7 @@ const CreateBlog = ({ router }) => {
               {showTags()}
             </ul>
           </div>
+          <hr />
         </div>
       </div>
     </div>
