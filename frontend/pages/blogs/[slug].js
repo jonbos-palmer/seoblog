@@ -33,7 +33,6 @@ SingleBlog.getInitialProps = ({ query }) => {
     if (data.error) {
       console.log(data.error);
     } else {
-      console.log(data.categories);
       return { blog: data };
     }
   });
