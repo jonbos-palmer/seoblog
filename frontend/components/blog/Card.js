@@ -34,12 +34,22 @@ const Card = ({ blog }) => {
           {moment(blog.updatedAt).fromNow()}
         </p>
       </section>
-      <section>
+      <section className="pb-4">
         {showBlogCategories(blog)}
         {showBlogTags(blog)}
+        <br />
       </section>
       <div className="row">
-        <div className="col-md-4"></div>
+        <div className="col-md-4">
+          <section>
+            <img
+              className="img img-fluid"
+              style={{ maxHeight: "150px", width: "auto" }}
+              src={`${API}/blog/photo/${blog.slug}`}
+              alt={blog.title}
+            />
+          </section>
+        </div>
         <div className="col-md-8">
           <section>
             <div className="pb-3">{renderHTML(blog.excerpt)}</div>
