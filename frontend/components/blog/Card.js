@@ -53,10 +53,10 @@ const Card = ({ blog }) => {
         <div className="col-md-8">
           <section>
             <div className="pb-3">{renderHTML(blog.excerpt)}</div>
+            <Link href={`/blogs/${blog.slug}`}>
+              <a className="btn btn-primary pt-2">Read more</a>
+            </Link>
           </section>
-          <Link href={`/blogs/${blog.slug}`}>
-            <a className="btn btn-primary pt-2">Read More</a>
-          </Link>
         </div>
       </div>
     </div>
